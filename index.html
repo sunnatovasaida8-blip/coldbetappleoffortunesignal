@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="uz" class="dark">
 <head>
@@ -47,14 +46,6 @@
         .font-orbitron {
             font-family: 'Orbitron', sans-serif;
         }
-        /* Custom animations */
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-        .animate-pulse-glow {
-            animation: pulse-glow 2s infinite ease-in-out;
-        }
         @keyframes scan-line {
             0% { top: 0%; }
             100% { top: 100%; }
@@ -67,22 +58,14 @@
             box-shadow: 0 0 15px #00FF88;
             animation: scan-line 1.5s infinite linear;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0F172A;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-start p-0 sm:p-4 md:p-6 bg-[#080B11]">
+<body class="min-h-screen flex flex-col items-center justify-start p-0 sm:p-4 bg-[#080B11]">
 
-    <!-- Main Container Simulation of Telegram Mini App -->
+    <!-- Main Container -->
     <div class="w-full max-w-md min-h-screen sm:min-h-[840px] bg-tg-bg sm:rounded-3xl border border-tg-border/50 shadow-2xl flex flex-col overflow-hidden relative">
 
         <!-- Top Telegram Bot Header -->
@@ -107,7 +90,6 @@
                 </div>
             </div>
             
-            <!-- Controls (Sound & Info) -->
             <div class="flex items-center space-x-2">
                 <button id="soundToggleBtn" onclick="toggleSound()" class="p-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 hover:text-tg-accent transition">
                     <i id="soundIcon" class="fa-solid fa-volume-high text-xs"></i>
@@ -127,7 +109,7 @@
             <span class="text-[10px] bg-amber-500/20 text-tg-gold px-2 py-0.5 rounded-full border border-amber-500/30 font-mono">98.9% Aniqlik</span>
         </div>
 
-        <!-- Mode Navigation Tabs Switcher -->
+        <!-- Mode Navigation Tabs -->
         <div class="p-3 bg-slate-900/60 border-b border-slate-800 flex gap-2">
             <button id="tabApple" onclick="switchMode('apple')" class="flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-slate-950 shadow-neon-green">
                 <i class="fa-solid fa-apple-whole text-sm"></i>
@@ -144,7 +126,6 @@
 
             <!-- ================= APPLE OF FORTUNE SECTION ================= -->
             <div id="appleSection" class="space-y-4">
-                <!-- Status Box -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 flex items-center justify-between text-xs">
                     <div>
                         <span class="text-slate-400 block">Prognoz holati:</span>
@@ -158,7 +139,6 @@
                     </div>
                 </div>
 
-                <!-- Game Mode Switcher: Signal Predictor vs Interactive Play -->
                 <div class="flex rounded-xl bg-slate-900 p-1 border border-slate-800 text-xs">
                     <button id="appleModeSignal" onclick="setAppleSubMode('signal')" class="flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800">
                         <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Bot Prognoz
@@ -168,9 +148,9 @@
                     </button>
                 </div>
 
-                <!-- Apple Grid Container (10 rows x 5 apples) -->
-                <div class="relative bg-slate-900/90 border border-slate-800 rounded-2xl p-3 shadow-inner overflow-hidden">
-                    <div id="appleScannerOverlay" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-20 flex flex-col items-center justify-center space-y-3">
+                <!-- Apple Grid Container -->
+                <div class="relative bg-slate-900/90 border border-slate-800 rounded-2xl p-3 shadow-inner overflow-hidden min-h-[360px] flex items-center justify-center">
+                    <div id="appleScannerOverlay" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-sm z-20 flex flex-col items-center justify-center space-y-3">
                         <div class="relative w-16 h-16 flex items-center justify-center">
                             <div class="absolute inset-0 border-4 border-tg-accent/30 rounded-full animate-ping"></div>
                             <div class="absolute inset-0 border-4 border-t-tg-accent border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
@@ -182,13 +162,12 @@
                         </div>
                     </div>
 
-                    <!-- 10 Rows Grid -->
-                    <div id="appleGrid" class="flex flex-col-reverse gap-1.5">
-                        <!-- Rows dynamically generated or predefined in HTML -->
+                    <!-- 10 Rows Grid Container -->
+                    <div id="appleGrid" class="w-full flex flex-col-reverse gap-1.5">
+                        <!-- Dynamic HTML content via Javascript -->
                     </div>
                 </div>
 
-                <!-- Apple Controls -->
                 <div class="space-y-2">
                     <button id="getAppleSignalBtn" onclick="generateAppleSignal()" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-tg-accent to-emerald-400 text-slate-950 shadow-neon-green active:scale-95 transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-bolt"></i>
@@ -203,7 +182,6 @@
 
             <!-- ================= MINES SECTION ================= -->
             <div id="minesSection" class="hidden space-y-4">
-                <!-- Mine Selector Header -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3.5 space-y-3">
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-300 font-medium">Minalar sonini tanlang:</span>
@@ -217,7 +195,6 @@
                     </div>
                 </div>
 
-                <!-- Submode Tabs for Mines -->
                 <div class="flex rounded-xl bg-slate-900 p-1 border border-slate-800 text-xs">
                     <button id="minesModeSignal" onclick="setMinesSubMode('signal')" class="flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800">
                         <i class="fa-solid fa-radar mr-1"></i> Bot Radar Signal
@@ -227,11 +204,8 @@
                     </button>
                 </div>
 
-                <!-- Mines 5x5 Grid Canvas / Box -->
                 <div class="relative bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-inner flex flex-col items-center justify-center">
-                    
-                    <!-- Scanner Animation Overlay -->
-                    <div id="minesScannerOverlay" class="hidden absolute inset-0 bg-slate-950/85 rounded-2xl backdrop-blur-sm z-20 flex flex-col items-center justify-center p-4">
+                    <div id="minesScannerOverlay" class="hidden absolute inset-0 bg-slate-950/90 rounded-2xl backdrop-blur-sm z-20 flex flex-col items-center justify-center p-4">
                         <div class="scanner-line"></div>
                         <div class="w-20 h-20 border-2 border-tg-accent/40 rounded-full flex items-center justify-center relative animate-spin">
                             <div class="w-10 h-10 border-2 border-tg-gold/60 rounded-full"></div>
@@ -240,13 +214,11 @@
                         <span id="confidenceScore" class="text-xs font-bold text-tg-gold mt-1">Ehtimollik: 99.2%</span>
                     </div>
 
-                    <!-- 5x5 Grid -->
                     <div id="minesGrid" class="grid grid-cols-5 gap-2.5 w-full max-w-[320px] aspect-square">
                         <!-- 25 Cells -->
                     </div>
                 </div>
 
-                <!-- Mines Controls -->
                 <div class="space-y-2">
                     <button id="getMinesSignalBtn" onclick="generateMinesSignal()" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-tg-accent to-emerald-400 text-slate-950 shadow-neon-green active:scale-95 transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-crosshairs"></i>
@@ -265,23 +237,16 @@
                     <span class="flex items-center gap-1.5">
                         <i class="fa-solid fa-terminal text-tg-accent"></i> Bot Tizim Jurnali
                     </span>
-                    <span id="logCount" class="font-mono text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">3 Signal</span>
+                    <span id="logCount" class="font-mono text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Aktiv</span>
                 </div>
                 <div id="signalLog" class="font-mono text-[11px] space-y-1.5 max-h-24 overflow-y-auto pr-1 text-slate-300">
-                    <div class="flex justify-between text-emerald-400/80">
-                        <span>[BOT] Coldbet serveriga ulandi</span>
-                        <span>12:04</span>
-                    </div>
-                    <div class="flex justify-between text-slate-400">
-                        <span>[INFO] Algoritm v4.2 aktivlashtirildi</span>
-                        <span>12:05</span>
-                    </div>
+                    <!-- Logs -->
                 </div>
             </div>
 
         </div>
 
-        <!-- Footer / Telegram WebApp Action Bar -->
+        <!-- Footer -->
         <footer class="bg-slate-900/90 border-t border-slate-800 p-3 text-center text-[11px] text-slate-400 flex justify-between items-center">
             <span class="flex items-center gap-1">
                 <i class="fa-solid fa-shield-halved text-tg-accent"></i> Coldbet Bot Official
@@ -292,7 +257,7 @@
         </footer>
     </div>
 
-    <!-- VIP Modal -->
+    <!-- Modals -->
     <div id="vipModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-amber-500/40 rounded-2xl w-full max-w-xs p-5 space-y-4 shadow-neon-gold text-center relative">
             <button onclick="closeModal('vipModal')" class="absolute top-3 right-3 text-slate-400 hover:text-white">
@@ -305,20 +270,14 @@
             <p class="text-xs text-slate-300 leading-relaxed">
                 VIP kanalimizda 99.8% aniqlikdagi eksklyuziv Coldbet va 1xBet o'yin signallari taqdim etiladi!
             </p>
-            <div class="bg-slate-950 p-3 rounded-xl text-left space-y-1.5 text-xs text-slate-300">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-tg-accent"></i> 24/7 Avto Signallar</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-tg-accent"></i> Mines & Apple Botlar</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-tg-accent"></i> Kunlik 500% Foyda</div>
-            </div>
             <button onclick="alertUz('VIP bot obuna so\'rovingiz qabul qilindi!')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-tg-gold text-slate-950 font-bold text-xs shadow-neon-gold">
                 ULANISH (@COLDBET_VIP)
             </button>
         </div>
     </div>
 
-    <!-- Info Modal -->
     <div id="infoModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-xs p-5 space-y-3 shadow-2xl text-slate-200 text-xs relative">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-xs p-5 space-y-3 text-slate-200 text-xs relative">
             <button onclick="closeModal('infoModal')" class="absolute top-3 right-3 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
@@ -326,44 +285,35 @@
                 <i class="fa-solid fa-circle-info text-tg-accent"></i> Qo'llanma & Haqida
             </h3>
             <p class="leading-relaxed">
-                Bu bot Coldbet va 1xBet platformalaridagi "Apple of Fortune" hamda "Mines" o'yinlari uchun signal simulyatoridir.
+                Bu bot Coldbet va 1xBet platformalaridagi "Apple of Fortune" va "Mines" o'yinlari uchun signal simulyatoridir.
             </p>
-            <ul class="space-y-1.5 list-disc list-inside text-slate-300">
-                <li><b class="text-tg-accent">Bot Prognoz:</b> Tizim tomonidan hisoblangan eng xavfsiz yo'llar.</li>
-                <li><b class="text-tg-gold">Interaktiv mode:</b> Bot signali asosida o'zingiz o'ynab ko'ring.</li>
-            </ul>
         </div>
     </div>
 
-    <!-- Notification Toast -->
+    <!-- Toast Notification -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl text-xs font-bold shadow-lg opacity-0 transition-opacity pointer-events-none z-50 flex items-center gap-2">
         <i class="fa-solid fa-circle-check"></i>
         <span id="toastMsg">Xabar</span>
     </div>
 
-    <!-- JavaScript Game & Signal Logic -->
+    <!-- Script Logic -->
     <script>
-        /* Multipliers for Apple of Fortune */
         const APPLE_MULTIPLIERS = [1.23, 1.54, 1.93, 2.41, 4.02, 6.71, 11.18, 18.64, 40.00, 349.68];
 
-        // Global State
-        let currentMode = 'apple'; // 'apple' or 'mines'
-        let appleSubMode = 'signal'; // 'signal' or 'play'
-        let minesSubMode = 'signal'; // 'signal' or 'play'
+        let currentMode = 'apple';
+        let appleSubMode = 'signal';
+        let minesSubMode = 'signal';
         let minesCount = 3;
         let soundEnabled = true;
 
-        // Interactive game state
         let appleCurrentRow = 0;
-        let appleActivePath = []; // Array of predicted column indices for 10 rows
+        let appleActivePath = [];
         let appleGameOver = false;
 
-        let minesGridData = []; // Array of length 25: 'safe', 'mine', 'flag'
+        let minesGridData = [];
         let minesRevealed = [];
-        let minesSignalPositions = [];
         let minesGameOver = false;
 
-        // Web Audio API Sound Effects
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
         function playSound(type) {
@@ -374,57 +324,33 @@
                 const gain = audioCtx.createGain();
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-
                 const now = audioCtx.currentTime;
 
                 if (type === 'click') {
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(600, now);
-                    gain.gain.setValueAtTime(0.1, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
-                    osc.start(now);
-                    osc.stop(now + 0.05);
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(600, now);
+                    gain.gain.setValueAtTime(0.1, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                    osc.start(now); osc.stop(now + 0.05);
                 } else if (type === 'signal') {
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(440, now);
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(440, now);
                     osc.frequency.exponentialRampToValueAtTime(880, now + 0.2);
-                    gain.gain.setValueAtTime(0.15, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-                    osc.start(now);
-                    osc.stop(now + 0.25);
+                    gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                    osc.start(now); osc.stop(now + 0.25);
                 } else if (type === 'win') {
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(523.25, now);
-                    osc.frequency.setValueAtTime(659.25, now + 0.1);
-                    osc.frequency.setValueAtTime(783.99, now + 0.2);
-                    gain.gain.setValueAtTime(0.2, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-                    osc.start(now);
-                    osc.stop(now + 0.4);
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(523.25, now);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3);
                 } else if (type === 'boom') {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(150, now);
-                    osc.frequency.exponentialRampToValueAtTime(40, now + 0.3);
-                    gain.gain.setValueAtTime(0.3, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-                    osc.start(now);
-                    osc.stop(now + 0.3);
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now);
+                    gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3);
                 }
-            } catch (e) {
-                console.log('Audio error', e);
-            }
+            } catch (e) {}
         }
 
         function toggleSound() {
             soundEnabled = !soundEnabled;
-            const icon = document.getElementById('soundIcon');
-            if (soundEnabled) {
-                icon.className = 'fa-solid fa-volume-high text-xs text-tg-accent';
-                showToast('Ovoz yoqildi');
-            } else {
-                icon.className = 'fa-solid fa-volume-xmark text-xs text-slate-400';
-                showToast('Ovoz o\'chirildi');
-            }
+            document.getElementById('soundIcon').className = soundEnabled ? 'fa-solid fa-volume-high text-xs text-tg-accent' : 'fa-solid fa-volume-xmark text-xs text-slate-400';
+            showToast(soundEnabled ? 'Ovoz yoqildi' : 'Ovoz o\'chirildi');
         }
 
         function showToast(msg) {
@@ -439,61 +365,53 @@
             const now = new Date();
             const timeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
             const div = document.createElement('div');
-            div.className = "flex justify-between text-tg-accent animate-pulse";
+            div.className = "flex justify-between text-tg-accent";
             div.innerHTML = `<span>${text}</span><span>${timeStr}</span>`;
             logContainer.prepend(div);
         }
 
-        /* Mode Switcher */
         function switchMode(mode) {
             playSound('click');
             currentMode = mode;
-            const tabApple = document.getElementById('tabApple');
-            const tabMines = document.getElementById('tabMines');
-            const appleSection = document.getElementById('appleSection');
-            const minesSection = document.getElementById('minesSection');
-
             if (mode === 'apple') {
-                tabApple.className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-slate-950 shadow-neon-green";
-                tabMines.className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-slate-800 text-slate-400 border border-slate-700 hover:text-white";
-                appleSection.classList.remove('hidden');
-                minesSection.classList.add('hidden');
+                document.getElementById('tabApple').className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-slate-950 shadow-neon-green";
+                document.getElementById('tabMines').className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-slate-800 text-slate-400 border border-slate-700 hover:text-white";
+                document.getElementById('appleSection').classList.remove('hidden');
+                document.getElementById('minesSection').classList.add('hidden');
             } else {
-                tabMines.className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-slate-950 shadow-neon-green";
-                tabApple.className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-slate-800 text-slate-400 border border-slate-700 hover:text-white";
-                minesSection.classList.remove('hidden');
-                appleSection.classList.add('hidden');
+                document.getElementById('tabMines').className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-slate-950 shadow-neon-green";
+                document.getElementById('tabApple').className = "flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 bg-slate-800 text-slate-400 border border-slate-700 hover:text-white";
+                document.getElementById('minesSection').classList.remove('hidden');
+                document.getElementById('appleSection').classList.add('hidden');
             }
         }
 
-        /* ================= APPLE OF FORTUNE LOGIC ================= */
+        /* Apple Grid Render */
         function renderAppleGrid() {
             const grid = document.getElementById('appleGrid');
             grid.innerHTML = '';
 
             for (let r = 0; r < 10; r++) {
                 const rowDiv = document.createElement('div');
-                rowDiv.className = `flex items-center justify-between p-1.5 rounded-xl border transition-all ${
+                rowDiv.className = `flex items-center justify-between p-1 rounded-xl border transition-all ${
                     appleSubMode === 'play' && r === appleCurrentRow 
-                        ? 'border-tg-accent bg-emerald-950/30 shadow-neon-green' 
+                        ? 'border-tg-accent bg-emerald-950/40 shadow-neon-green' 
                         : 'border-slate-800/80 bg-slate-950/40'
                 }`;
 
-                // Multiplier label
                 const multLabel = document.createElement('div');
-                multLabel.className = "w-12 text-[10px] font-mono font-bold text-tg-gold flex items-center justify-center bg-slate-900 border border-amber-500/30 rounded-lg py-1";
+                multLabel.className = "w-11 text-[9px] font-mono font-bold text-tg-gold flex items-center justify-center bg-slate-900 border border-amber-500/30 rounded-lg py-1";
                 multLabel.innerText = `x${APPLE_MULTIPLIERS[r]}`;
                 rowDiv.appendChild(multLabel);
 
-                // 5 Apple spots
                 const spotsContainer = document.createElement('div');
-                spotsContainer.className = "flex gap-1.5 flex-1 justify-end ml-2";
+                spotsContainer.className = "flex gap-1.5 flex-1 justify-end ml-1.5";
 
                 for (let c = 0; c < 5; c++) {
                     const btn = document.createElement('button');
                     btn.setAttribute('data-row', r);
                     btn.setAttribute('data-col', c);
-                    btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-800/90 border border-slate-700 flex items-center justify-center text-sm transition-all";
+                    btn.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-xs transition-all";
 
                     if (appleSubMode === 'play') {
                         btn.onclick = () => handleAppleCellClick(r, c);
@@ -512,22 +430,17 @@
         function setAppleSubMode(mode) {
             playSound('click');
             appleSubMode = mode;
-            const btnSignal = document.getElementById('appleModeSignal');
-            const btnPlay = document.getElementById('appleModePlay');
-            const getSignalBtn = document.getElementById('getAppleSignalBtn');
-            const resetBtn = document.getElementById('resetApplePlayBtn');
-
             if (mode === 'signal') {
-                btnSignal.className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
-                btnPlay.className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
-                getSignalBtn.classList.remove('hidden');
-                resetBtn.classList.add('hidden');
+                document.getElementById('appleModeSignal').className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
+                document.getElementById('appleModePlay').className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
+                document.getElementById('getAppleSignalBtn').classList.remove('hidden');
+                document.getElementById('resetApplePlayBtn').classList.add('hidden');
                 document.getElementById('appleStatusText').innerHTML = `<i class="fa-solid fa-circle-check"></i> Signalga tayyor`;
             } else {
-                btnPlay.className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
-                btnSignal.className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
-                getSignalBtn.classList.add('hidden');
-                resetBtn.classList.remove('hidden');
+                document.getElementById('appleModePlay').className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
+                document.getElementById('appleModeSignal').className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
+                document.getElementById('getAppleSignalBtn').classList.add('hidden');
+                document.getElementById('resetApplePlayBtn').classList.remove('hidden');
                 resetApplePlayGame();
             }
             renderAppleGrid();
@@ -542,44 +455,40 @@
 
             let progress = 0;
             const interval = setInterval(() => {
-                progress += 20;
+                progress += 25;
                 progressBar.style.width = `${progress}%`;
                 if (progress >= 100) {
                     clearInterval(interval);
                     scanner.classList.add('hidden');
                     displayApplePredictedPath();
                 }
-            }, 120);
+            }, 100);
         }
 
         function displayApplePredictedPath() {
             renderAppleGrid();
-            // Generate random path (row 0 to 6-9)
-            const safeRows = Math.floor(Math.random() * 4) + 6; // 6 to 9 rows safe
+            const safeRows = Math.floor(Math.random() * 4) + 5; // 5..8 qator
             appleActivePath = [];
 
-            for (let r = 0; r < 10; r++) {
-                if (r < safeRows) {
-                    const safeCol = Math.floor(Math.random() * 5);
-                    appleActivePath.push(safeCol);
+            for (let r = 0; r < safeRows; r++) {
+                const safeCol = Math.floor(Math.random() * 5);
+                appleActivePath.push(safeCol);
 
-                    const btn = document.querySelector(`#appleGrid [data-row="${r}"][data-col="${safeCol}"]`);
-                    if (btn) {
-                        btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/20 border-2 border-tg-accent text-tg-accent font-bold flex items-center justify-center text-base shadow-neon-green animate-pulse";
-                        btn.innerHTML = `<i class="fa-solid fa-apple-whole text-tg-accent"></i>`;
-                    }
+                const btn = document.querySelector(`#appleGrid [data-row="${r}"][data-col="${safeCol}"]`);
+                if (btn) {
+                    btn.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/20 border-2 border-tg-accent text-tg-accent font-bold flex items-center justify-center text-sm shadow-neon-green animate-pulse";
+                    btn.innerHTML = `<i class="fa-solid fa-apple-whole text-tg-accent"></i>`;
                 }
             }
 
             playSound('win');
-            addLog(`[APPLE] Signal tayyor! Safe rows: ${safeRows}`);
-            showToast('Signal muvaffaqiyatli olindi!');
+            addLog(`[APPLE] Signal olindi: ${safeRows} qator xavfsiz`);
+            showToast('Olma signal muvaffaqiyatli chiqarildi!');
         }
 
         function resetApplePlayGame() {
             appleCurrentRow = 0;
             appleGameOver = false;
-            // Generate hidden safe map for all 10 rows
             appleActivePath = [];
             for (let r = 0; r < 10; r++) {
                 appleActivePath.push(Math.floor(Math.random() * 5));
@@ -591,7 +500,7 @@
         function handleAppleCellClick(row, col) {
             if (appleSubMode !== 'play' || appleGameOver) return;
             if (row !== appleCurrentRow) {
-                showToast(`Iltimos, ${appleCurrentRow + 1}-qatordan tanlang!`);
+                showToast(`Hozir ${appleCurrentRow + 1}-qatordan tanlashingiz kerak!`);
                 return;
             }
 
@@ -599,47 +508,39 @@
             const btn = document.querySelector(`#appleGrid [data-row="${row}"][data-col="${col}"]`);
 
             if (col === safeCol) {
-                // Correct choice!
                 playSound('win');
-                btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/30 border-2 border-tg-accent text-tg-accent font-bold flex items-center justify-center text-base shadow-neon-green";
+                btn.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/30 border-2 border-tg-accent text-tg-accent font-bold flex items-center justify-center text-sm shadow-neon-green";
                 btn.innerHTML = `<i class="fa-solid fa-apple-whole text-tg-accent"></i>`;
 
                 appleCurrentRow++;
                 if (appleCurrentRow >= 10) {
                     appleGameOver = true;
                     document.getElementById('appleStatusText').innerHTML = `<span class="text-tg-gold font-bold">G'ALABA! MAX x349.68!</span>`;
-                    showToast('Tabriklaymiz! Barcha qatordan o\'tdingiz!');
-                    addLog('[APPLE] INTERAKTIV: Barcha qatordan o\'tildi!');
+                    showToast('Tabriklaymiz! Barcha 10 qatordan o\'tdingiz!');
                 } else {
                     document.getElementById('appleStatusText').innerHTML = `<span class="text-emerald-400 font-bold">${appleCurrentRow + 1}-qatorga o'ting (x${APPLE_MULTIPLIERS[appleCurrentRow]})</span>`;
                     renderAppleGrid();
-                    // Restore previous row visuals
                     for (let r = 0; r < appleCurrentRow; r++) {
                         const prevBtn = document.querySelector(`#appleGrid [data-row="${r}"][data-col="${appleActivePath[r]}"]`);
                         if (prevBtn) {
-                            prevBtn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/30 border-2 border-tg-accent text-tg-accent font-bold flex items-center justify-center text-base";
+                            prevBtn.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-500/30 border-2 border-tg-accent text-tg-accent flex items-center justify-center text-sm";
                             prevBtn.innerHTML = `<i class="fa-solid fa-apple-whole text-tg-accent"></i>`;
                         }
                     }
                 }
             } else {
-                // Rotten Apple / Mine hit
                 playSound('boom');
                 appleGameOver = true;
-                btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-red-500/30 border-2 border-tg-danger text-tg-danger font-bold flex items-center justify-center text-base shadow-neon-red";
+                btn.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-red-500/30 border-2 border-tg-danger text-tg-danger flex items-center justify-center text-sm shadow-neon-red";
                 btn.innerHTML = `<i class="fa-solid fa-skull"></i>`;
-
                 document.getElementById('appleStatusText').innerHTML = `<span class="text-tg-danger font-bold">YUTQAZDINGIZ! (Chirigan olma)</span>`;
-                addLog('[APPLE] INTERAKTIV: O\'yin mag'lubiyat bilan tugadi');
             }
         }
 
-
-        /* ================= MINES SIGNAL BOT LOGIC ================= */
+        /* Mines Logic */
         function renderMinesGrid() {
             const grid = document.getElementById('minesGrid');
             grid.innerHTML = '';
-
             for (let i = 0; i < 25; i++) {
                 const btn = document.createElement('button');
                 btn.setAttribute('data-index', i);
@@ -650,7 +551,6 @@
                 } else {
                     btn.disabled = true;
                 }
-
                 grid.appendChild(btn);
             }
         }
@@ -659,7 +559,6 @@
             playSound('click');
             minesCount = count;
             document.getElementById('selectedMinesCount').innerText = `${count} MINA`;
-
             document.querySelectorAll('.mine-btn').forEach(btn => {
                 if (btn.innerText.trim() == count) {
                     btn.className = "mine-btn bg-emerald-500/20 text-tg-accent font-bold py-2 rounded-xl text-xs border border-tg-accent shadow-neon-green transition";
@@ -667,30 +566,22 @@
                     btn.className = "mine-btn bg-slate-800 text-slate-300 font-bold py-2 rounded-xl text-xs border border-slate-700 hover:border-tg-accent transition";
                 }
             });
-
-            if (minesSubMode === 'play') {
-                resetMinesPlayGame();
-            }
+            if (minesSubMode === 'play') resetMinesPlayGame();
         }
 
         function setMinesSubMode(mode) {
             playSound('click');
             minesSubMode = mode;
-            const btnSignal = document.getElementById('minesModeSignal');
-            const btnPlay = document.getElementById('minesModePlay');
-            const getSignalBtn = document.getElementById('getMinesSignalBtn');
-            const resetBtn = document.getElementById('resetMinesPlayBtn');
-
             if (mode === 'signal') {
-                btnSignal.className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
-                btnPlay.className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
-                getSignalBtn.classList.remove('hidden');
-                resetBtn.classList.add('hidden');
+                document.getElementById('minesModeSignal').className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
+                document.getElementById('minesModePlay').className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
+                document.getElementById('getMinesSignalBtn').classList.remove('hidden');
+                document.getElementById('resetMinesPlayBtn').classList.add('hidden');
             } else {
-                btnPlay.className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
-                btnSignal.className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
-                getSignalBtn.classList.add('hidden');
-                resetBtn.classList.remove('hidden');
+                document.getElementById('minesModePlay').className = "flex-1 py-1.5 rounded-lg font-medium transition text-tg-accent bg-slate-800";
+                document.getElementById('minesModeSignal').className = "flex-1 py-1.5 rounded-lg font-medium transition text-slate-400 hover:text-white";
+                document.getElementById('getMinesSignalBtn').classList.add('hidden');
+                document.getElementById('resetMinesPlayBtn').classList.remove('hidden');
                 resetMinesPlayGame();
             }
             renderMinesGrid();
@@ -700,22 +591,18 @@
             playSound('signal');
             const overlay = document.getElementById('minesScannerOverlay');
             overlay.classList.remove('hidden');
-
-            const confScore = (97 + Math.random() * 2.8).toFixed(1);
-            document.getElementById('confidenceScore').innerText = `Ehtimollik: ${confScore}%`;
+            document.getElementById('confidenceScore').innerText = `Ehtimollik: ${(97.5 + Math.random() * 2.3).toFixed(1)}%`;
 
             setTimeout(() => {
                 overlay.classList.add('hidden');
                 displayMinesSignal();
-            }, 1200);
+            }, 1000);
         }
 
         function displayMinesSignal() {
             renderMinesGrid();
-            // Choose 3 to 6 safe positions
-            const safeCount = Math.max(3, 8 - minesCount);
+            const safeCount = Math.max(3, 7 - minesCount);
             const positions = [];
-
             while (positions.length < safeCount) {
                 const rand = Math.floor(Math.random() * 25);
                 if (!positions.includes(rand)) positions.push(rand);
@@ -730,16 +617,14 @@
             });
 
             playSound('win');
-            addLog(`[MINES] ${minesCount} mina signal tayyor (${safeCount} yulduz)`);
-            showToast('Signal olindi!');
+            addLog(`[MINES] ${minesCount} minalik signal taqdim etildi`);
+            showToast('Mines signal olindi!');
         }
 
         function resetMinesPlayGame() {
             minesGameOver = false;
             minesGridData = Array(25).fill('safe');
             minesRevealed = Array(25).fill(false);
-
-            // Plant mines
             let planted = 0;
             while (planted < minesCount) {
                 const rand = Math.floor(Math.random() * 25);
@@ -748,24 +633,20 @@
                     planted++;
                 }
             }
-
             renderMinesGrid();
         }
 
         function handleMinesCellClick(index) {
             if (minesSubMode !== 'play' || minesGameOver || minesRevealed[index]) return;
-
             minesRevealed[index] = true;
             const cell = document.querySelector(`#minesGrid [data-index="${index}"]`);
 
             if (minesGridData[index] === 'mine') {
-                // Hit Bomb
                 playSound('boom');
                 minesGameOver = true;
                 cell.className = "aspect-square rounded-xl bg-red-500/30 border-2 border-tg-danger text-tg-danger flex items-center justify-center text-xl shadow-neon-red";
                 cell.innerHTML = `<i class="fa-solid fa-bomb text-tg-danger animate-ping"></i>`;
 
-                // Reveal all mines
                 minesGridData.forEach((type, idx) => {
                     if (type === 'mine') {
                         const mCell = document.querySelector(`#minesGrid [data-index="${idx}"]`);
@@ -773,40 +654,24 @@
                         mCell.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
                     }
                 });
-
                 showToast('BOOM! Mina portladi!');
-                addLog(`[MINES] INTERAKTIV: ${minesCount} minalik o'yinda mag'lubiyat`);
             } else {
-                // Safe Star
                 playSound('win');
                 cell.className = "aspect-square rounded-xl bg-emerald-500/20 border-2 border-tg-accent text-tg-gold flex items-center justify-center text-xl shadow-neon-gold";
                 cell.innerHTML = `<i class="fa-solid fa-star text-tg-gold"></i>`;
             }
         }
 
-        /* Modal Helpers */
-        function openModal(id) {
-            playSound('click');
-            document.getElementById(id).classList.remove('hidden');
-        }
+        function openModal(id) { playSound('click'); document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { playSound('click'); document.getElementById(id).classList.add('hidden'); }
+        function alertUz(msg) { showToast(msg); closeModal('vipModal'); }
 
-        function closeModal(id) {
-            playSound('click');
-            document.getElementById(id).classList.add('hidden');
-        }
-
-        function alertUz(msg) {
-            showToast(msg);
-            closeModal('vipModal');
-        }
-
-        // Initialize App on Load
         window.onload = function() {
             renderAppleGrid();
             renderMinesGrid();
-            addLog('[BOT] Tizim ishga tushirildi');
+            addLog('[BOT] Coldbet tizimi va algoritmlari tayyor');
         };
     </script>
 </body>
-</html>
-```
+    </html>
+    
